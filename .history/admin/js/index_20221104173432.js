@@ -181,104 +181,74 @@ function getMyEl(el) { return document.getElementById(el); }
 //**Tạo require --Create required-check--- 
 
 function required(id, span) {
-    var spanDiv = getMyEl(span);
+    var spanAccount = getMyEl(span);
     var result = getMyEl(id).value;
     if (result === "") {
-        spanDiv.style.display = "inline-block";
-        spanDiv.innerHTML = "*This field is required";
+        spanAccount.style.display = "inline-block";
+        spanAccount.innerHTML = "*This field is required";
         return false;
     }
-    spanDiv.innerHTML = "";
+    spanAccount.innerHTML = "";
     return true;
 }
 
 function requiredSelect(id, span) {
-    var spanDiv = getMyEl(span);
+    var spanAccount = getMyEl(span);
     var result = getMyEl(id).value;
     if (result === "Unknow") {
-        spanDiv.style.display = "inline-block";
-        spanDiv.innerHTML = "*This field need to be selected";
+        spanAccount.style.display = "inline-block";
+        spanAccount.innerHTML = "*This field need to be selected";
         return false;
     }
-    spanDiv.innerHTML = "";
+    spanAccount.innerHTML = "";
     return true;
 }
 
-function requiredSelect(id, span) {
-    var spanDiv = getMyEl(span);
-    var result = getMyEl(id).value;
-    if (result === "Unknow") {
-        spanDiv.style.display = "inline-block";
-        spanDiv.innerHTML = "*This field need to be selected";
-        return false;
-    }
-    spanDiv.innerHTML = ""
-    return true;
-}
 //** tạo Length --Create length-check*/
 function length(id, span, min, max) {
-    var spanDiv = getMyEl(span);
+    var spanAccount = getMyEl(span);
     var result = getMyEl(id).value;
     if (result.length < min || result.length > max) {
-        spanDiv.style.display = "inline-block";
-        spanDiv.innerHTML = `*value limited, please input from ${min} to ${max} values`;
+        spanAccount.style.display = "inline-block";
+        spanAccount.innerHTML = `*value limited, please input from ${min} to ${max} values`;
         return false;
     }
-    spanDiv.innerHTML = ""
+    spanAccount.innerHTML = ""
     return true;
 }
 function lengthValue(id, span, min, max) {
-    var spanDiv = getMyEl(span);
+    var spanAccount = getMyEl(span);
     var result = getMyEl(id).value;
     if (result < min || result > max) {
-        spanDiv.style.display = "inline-block";
-        spanDiv.innerHTML = `*value limited, please input from ${min} to ${max} values`;
+        spanAccount.style.display = "inline-block";
+        spanAccount.innerHTML = `*value limited, please input from ${min} to ${max} values`;
         return false;
     }
-    spanDiv.innerHTML = ""
+    spanAccount.innerHTML = ""
     return true;
 }
 //** tạo pattern - Create pattern validation **/
 
 
 function patternName(id, span) {
-    let spanDiv = getMyEl(span);
+    let spanAccount = getMyEl(span);
     let result = getMyEl(id).value;
-    let pattern = /^[a-zA-Z0-9]+$/g;
+    let pattern = /^[A-z/s]+$/g;
     if (pattern.test(result)) {
-        spanDiv.innerHTML = ""
+        spanAccount.innerHTML = ""
         return true;
     }
-    spanDiv.style.display = "inline-block";
-    spanDiv.innerHTML = `*only word is accepted`;
+    spanAccount.style.display = "inline-block";
+    spanAccount.innerHTML = `*only word is accepted`;
     return false;
 }
-
-function patternPrice(id, span) {
-    let spanDiv = getMyEl(span);
-    let result = getMyEl(id).value;
-    let pattern = /^([0-9])+$/g;
-    if (pattern.test(result)) {
-        spanDiv.innerHTML = ""
-        return true;
-    }
-    spanDiv.style.display = "inline-block";
-    spanDiv.innerHTML = `*only number is accepted`;
-    return false;
-}
-
-
 
 //** Hàm tổng tích hợp các validation - Validation Form all */
 function validationForm() {
     let isValid = true;
-    isValid &= required("name", "spanName");
-    isValid &= required("price", "spanPrice") && patternPrice("price", "spanPrice");
-    isValid &= required("screen", "spanScreen");
-    isValid &= required("backCamera", "spanbackcamera");
-    isValid &= required("frontCamera", "spanfrontcamera");
-    isValid &= required("img", "spanimg");
-    isValid &= required("information", "spaninformation");
-    isValid &= requiredSelect("type", "spantype");
+    isValid &= required("name", "spanName") && patternName("name", "spanName");
     return isValid;
 }
+getMyEl("btnThemNV").addEventListener("click", function () {
+    createProduct() 
+});

@@ -41,8 +41,6 @@ function tableData(data) {
 
 //3-Chức năng thêm sản phẩm
 function createProduct() {
-    var valForm = validationForm();
-    if (!valForm) return;
     let id = document.getElementById('id').value;
     let name = document.getElementById('name').value;
     let price = document.getElementById('price').value;
@@ -103,8 +101,7 @@ function findID(returnId) {
         let idResult = item.id;
         if (idResult === returnId) { return idResult };
     }
-     alert("không có ID này! Vui lòng nhập lại");
-     return -1
+    return -1;
 }
 function getInformation(valID) {
     var getValue = document.getElementById("id").value;
@@ -128,7 +125,7 @@ function getInformation(valID) {
         document.getElementById('information').value = returnInformation.desc;
         document.getElementById('type').value = returnInformation.type;
         
-        document.getElementById("id").disabled =true;
+        
         document.getElementById('btnCapNhat').style.display="none";
         document.getElementById('btnThemNV').style.display="none";
         document.getElementById("btnHoanThanh").style.display="block";
@@ -154,131 +151,6 @@ function saveInformation(id){
         method: "PUT",
         data: list,
     })
-    promise.then(function (response) 
-        { console.log(response.data); 
-            alert('cập nhập thành công');
-            document.getElementById('id').value ="";
-            document.getElementById('name').value="";
-            document.getElementById('price').value="";
-            document.getElementById('screen').value="";
-            document.getElementById('backCamera').value="";
-            document.getElementById('frontCamera').value="";
-            document.getElementById('img').value="";
-            document.getElementById('information').value="";
-            document.getElementById('type').value="";
-            document.getElementById("id").disabled =false;
-            document.getElementById('btnCapNhat').style.display="block";
-            document.getElementById('btnThemNV').style.display="block";
-            document.getElementById("btnHoanThanh").style.display="none";
-            fetchApi() })
+    promise.then(function (response) { console.log(response.data); fetchApi() })
         .catch(function (err) { console.log(err) });
-}
-
-//** 7--- Function Validation - Form
-
-function getMyEl(el) { return document.getElementById(el); }
-
-//**Tạo require --Create required-check--- 
-
-function required(id, span) {
-    var spanDiv = getMyEl(span);
-    var result = getMyEl(id).value;
-    if (result === "") {
-        spanDiv.style.display = "inline-block";
-        spanDiv.innerHTML = "*This field is required";
-        return false;
-    }
-    spanDiv.innerHTML = "";
-    return true;
-}
-
-function requiredSelect(id, span) {
-    var spanDiv = getMyEl(span);
-    var result = getMyEl(id).value;
-    if (result === "Unknow") {
-        spanDiv.style.display = "inline-block";
-        spanDiv.innerHTML = "*This field need to be selected";
-        return false;
-    }
-    spanDiv.innerHTML = "";
-    return true;
-}
-
-function requiredSelect(id, span) {
-    var spanDiv = getMyEl(span);
-    var result = getMyEl(id).value;
-    if (result === "Unknow") {
-        spanDiv.style.display = "inline-block";
-        spanDiv.innerHTML = "*This field need to be selected";
-        return false;
-    }
-    spanDiv.innerHTML = ""
-    return true;
-}
-//** tạo Length --Create length-check*/
-function length(id, span, min, max) {
-    var spanDiv = getMyEl(span);
-    var result = getMyEl(id).value;
-    if (result.length < min || result.length > max) {
-        spanDiv.style.display = "inline-block";
-        spanDiv.innerHTML = `*value limited, please input from ${min} to ${max} values`;
-        return false;
-    }
-    spanDiv.innerHTML = ""
-    return true;
-}
-function lengthValue(id, span, min, max) {
-    var spanDiv = getMyEl(span);
-    var result = getMyEl(id).value;
-    if (result < min || result > max) {
-        spanDiv.style.display = "inline-block";
-        spanDiv.innerHTML = `*value limited, please input from ${min} to ${max} values`;
-        return false;
-    }
-    spanDiv.innerHTML = ""
-    return true;
-}
-//** tạo pattern - Create pattern validation **/
-
-
-function patternName(id, span) {
-    let spanDiv = getMyEl(span);
-    let result = getMyEl(id).value;
-    let pattern = /^[a-zA-Z0-9]+$/g;
-    if (pattern.test(result)) {
-        spanDiv.innerHTML = ""
-        return true;
-    }
-    spanDiv.style.display = "inline-block";
-    spanDiv.innerHTML = `*only word is accepted`;
-    return false;
-}
-
-function patternPrice(id, span) {
-    let spanDiv = getMyEl(span);
-    let result = getMyEl(id).value;
-    let pattern = /^([0-9])+$/g;
-    if (pattern.test(result)) {
-        spanDiv.innerHTML = ""
-        return true;
-    }
-    spanDiv.style.display = "inline-block";
-    spanDiv.innerHTML = `*only number is accepted`;
-    return false;
-}
-
-
-
-//** Hàm tổng tích hợp các validation - Validation Form all */
-function validationForm() {
-    let isValid = true;
-    isValid &= required("name", "spanName");
-    isValid &= required("price", "spanPrice") && patternPrice("price", "spanPrice");
-    isValid &= required("screen", "spanScreen");
-    isValid &= required("backCamera", "spanbackcamera");
-    isValid &= required("frontCamera", "spanfrontcamera");
-    isValid &= required("img", "spanimg");
-    isValid &= required("information", "spaninformation");
-    isValid &= requiredSelect("type", "spantype");
-    return isValid;
 }

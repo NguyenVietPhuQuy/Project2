@@ -279,6 +279,5 @@ function validationForm() {
     isValid &= required("frontCamera", "spanfrontcamera");
     isValid &= required("img", "spanimg");
     isValid &= required("information", "spaninformation");
-    isValid &= requiredSelect("type", "spantype");
     return isValid;
 }

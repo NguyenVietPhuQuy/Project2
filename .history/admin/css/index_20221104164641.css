@@ -167,8 +167,9 @@ img {
   
   }
   .head-form {
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    margin-top: 0.75rem;
   }
   
   .myCardHeader, .myCardFooter{

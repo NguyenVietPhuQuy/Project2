@@ -166,9 +166,8 @@ img {
 	  background: linear-gradient(to right, #ACB6E5, #74ebd5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   
   }
-  .head-form {
+  .header-title {
     text-align: center;
-    margin-top: 0.75rem;
   }
   
   .myCardHeader, .myCardFooter{

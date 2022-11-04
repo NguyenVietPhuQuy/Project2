@@ -204,17 +204,6 @@ function requiredSelect(id, span) {
     return true;
 }
 
-function requiredSelect(id, span) {
-    var spanDiv = getMyEl(span);
-    var result = getMyEl(id).value;
-    if (result === "Unknow") {
-        spanDiv.style.display = "inline-block";
-        spanDiv.innerHTML = "*This field need to be selected";
-        return false;
-    }
-    spanDiv.innerHTML = ""
-    return true;
-}
 //** tạo Length --Create length-check*/
 function length(id, span, min, max) {
     var spanDiv = getMyEl(span);
@@ -272,13 +261,7 @@ function patternPrice(id, span) {
 //** Hàm tổng tích hợp các validation - Validation Form all */
 function validationForm() {
     let isValid = true;
-    isValid &= required("name", "spanName");
+    isValid &= required("name", "spanName") && patternName("name", "spanName");
     isValid &= required("price", "spanPrice") && patternPrice("price", "spanPrice");
-    isValid &= required("screen", "spanScreen");
-    isValid &= required("backCamera", "spanbackcamera");
-    isValid &= required("frontCamera", "spanfrontcamera");
-    isValid &= required("img", "spanimg");
-    isValid &= required("information", "spaninformation");
-    isValid &= requiredSelect("type", "spantype");
     return isValid;
 }
