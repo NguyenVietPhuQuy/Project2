@@ -78,6 +78,11 @@ function deleteProduct(id) {
 function searchProduct() {
     search = [];
     let keyword = document.getElementById('searchName').value.trim().toLowerCase();
+    //check type
+    for (let i = 0; i < product_list.length; i++) {
+        let productCompare = product_list[i].type.toLowerCase().trim()
+        if (productCompare.includes(keyword)) { search.push(product_list[i]) }
+    };
     //check name
     for (let i = 0; i < product_list.length; i++) {
         let productName = product_list[i].name.toLowerCase().trim()
