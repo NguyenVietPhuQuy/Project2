@@ -260,7 +260,6 @@ img {
 .product__items:hover{
     box-shadow: 0 0 20px var(--first-color);
     opacity: 1;
-    transform: translateY(-10px);
 }
 .product__items img{
     width: 100%;
@@ -315,6 +314,7 @@ img {
 }
 .product-btn:hover{
     opacity: 1;
+    transform: translateX(20px);
 }
 /****========================Cart=============================****/
 .cart{
