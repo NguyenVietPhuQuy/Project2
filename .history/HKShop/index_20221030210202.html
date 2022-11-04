@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <!--bootstrap-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.2/js/bootstrap.min.js">
+    <!--font-awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--index.css-->
+    <link rel="stylesheet" href="./Css/index.css">
+
+</head>
+
+<body>
+    <div class="background-linear container">
+        <!--Header-->
+        <header id="header" class="header">
+            <nav class="nav container">
+                <a href="#" class="nav__logo">GREEN SMARTPHONE - Thế giới trong tầm tay bạn</a>
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list grid">
+                        <li class="nav__item">
+                            <a href="home">Trang Chủ</a>
+                            <i class="fa-solid fa-house-user"></i>
+                        </li>
+                        <li class="nav__item">
+                            <a href="home">Liên hệ</a>
+                            <i class="fa-regular fa-address-card"></i>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nav__icon">
+                    <i class="fa-solid fa-cart-shopping fa-show"></i>
+                    <div class="totalItem"></div>
+                </div>
+            </nav>
+        </header>
+        <main class="main" id="main">
+            <!-- Search/Filter-->
+            <section class="search section" id="search">
+                <div class="search__container container">
+                    <div class="search__content">
+                        <select id="search__select" class="search__select">
+                            <option value="" selected>Chọn sản phẩm</option>
+                            <option value="IPHONE">IPHONE</option>
+                            <option value="SAMSUNG">SAMSUNG</option>
+                        </select>
+                        <button id="search__btn" class="search__btn">
+                            <a href="/admin/login.html" target="_blank">For Admin</a>
+                        </button>
+                    </div>
+                </div>
+            </section>
+            <!-- Product-->
+            <section class="product section" id="product">
+                <div class="product__container container" id="product__container">
+                    <div class="product__list grid">
+
+                        <div class="product__items">
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cart -->
+            <section class="section cart">
+                <div class="cart__container container">
+                    <a href="#">
+                        <div class="cart__design">
+                            <i class="fa fa-times fa-close"></i>
+                        </div>
+                    </a>
+                    <h1>Shopping Cart</h1>
+                    <form>
+                        <table class="tr__design">
+                            <thead>
+                                <tr>
+                                    <th>items</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody">
+
+                            </tbody>
+                        </table>
+                        <div id="priceTotal">
+                            <p style="font-weight: bold; text-align: right; margin:20px 10px 20px 10px">Total:
+                                <span></span></p>
+                        </div>
+                        <div class="cart-btn">
+                            <button type="button" id="purchase">Purchase</button>
+                            <button type="button" id="clearTotal">Clear Total</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+        </main>
+        <footer>
+            <div class="footer__container container">
+                <span class="footer__item">Thanks You</span>
+            </div>
+        </footer>
+    </div>
+    <!--axios-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js"
+        integrity="sha512-0qU9M9jfqPw6FKkPafM3gy2CBAvUWnYVOfNPDYKVuRTel1PrciTj+a9P3loJB+j0QmN2Y0JYQmkBBS8W+mbezg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!--index.js-->
+    <script src="Js/Models/showclose.js"></script>
+    <script type="module" src="Js/Main/index.js"></script>
+</body>
+
+</html>
